@@ -1,0 +1,7 @@
+.drumkit {
+    background-image: url('../images/drumkit.jpg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    height: 100vh;
+}
