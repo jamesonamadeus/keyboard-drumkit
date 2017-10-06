@@ -2,48 +2,55 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>JS Drum Kit</title>
+  <title>Virtual Drumkit</title>
+  <link rel="icon" 
+  type="image/png" 
+  href="images/favicon.png">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <div class="drumkit">
-        <div data-key="65" class="keybox hihat">
-            <kbd><span class="keyletter">A</span></kbd>
-            <span class="sound">hihat</span>
-        </div>
-        <div data-key="87" class="keybox openhat">
-            <kbd><span class="keyletter">W</span></kbd>
-            <span class="sound">openhat</span>
-        </div>
-        <div data-key="69" class="keybox crash">
-            <kbd><span class="keyletter">E</span></kbd>
-            <span class="sound">crash</span>
-        </div>
-        <div data-key="68" class="keybox snare">
-                <kbd><span class="keyletter">D</span></kbd>
-                <span class="sound">snare</span>
+        <div class="keys">
+            <div data-key="65" class="key hihat">
+                <kbd>A</kbd>
+                <span class="sound">hihat</span>
             </div>
-        <div data-key="71" class="keybox kick">
-            <kbd><span class="keyletter">G</span></kbd>
-            <span class="sound">kick</span>
-        </div>
-        <div data-key="72" class="keybox s-tom">
-                <kbd><span class="keyletter">H</span></kbd>
-            <span class="sound">s-tom</span>
-        </div>
-        <div data-key="74" class="keybox l-tom">
-                <kbd><span class="keyletter">J</span></kbd>
-            <span class="sound">l-tom</span>
-        </div>
-        <div data-key="75" class="keybox boom">
-            <kbd><span class="keyletter">K</span></kbd>
-            <span class="sound">boom</span>
-        </div>
-        <div data-key="73" class="keybox ride">
-                <kbd><span class="keyletter">I</span></kbd>
-            <span class="sound">ride</span>
+            <div data-key="87" class="key openhat">
+                <kbd><span class="keyletter">W</span></kbd>
+                <span class="sound">openhat</span>
+            </div>
+            <div data-key="69" class="key crash">
+                <kbd><span class="keyletter">E</span></kbd>
+                <span class="sound">crash</span>
+            </div>
+            <div data-key="68" class="key snare">
+                    <kbd><span class="keyletter">D</span></kbd>
+                    <span class="sound">snare</span>
+                </div>
+            <div data-key="71" class="key kick">
+                <kbd><span class="keyletter">G</span></kbd>
+                <span class="sound">kick</span>
+            </div>
+            <div data-key="72" class="key s-tom">
+                    <kbd><span class="keyletter">H</span></kbd>
+                <span class="sound">s-tom</span>
+            </div>
+            <div data-key="74" class="key l-tom">
+                    <kbd><span class="keyletter">J</span></kbd>
+                <span class="sound">l-tom</span>
+            </div>
+            <div data-key="75" class="key boom">
+                <kbd><span class="keyletter">K</span></kbd>
+                <span class="sound">boom</span>
+            </div>
+            <div data-key="73" class="key ride">
+                    <kbd><span class="keyletter">I</span></kbd>
+                <span class="sound">ride</span>
+            </div>
         </div>
     </div><!--/.drumkit-->
+
+    <!-- Retrived the data-key from http://keycode.info -->
 
     <!--Drumkit Sound Wavs - Keyboard-->
     <audio data-key="65" src="sounds/hihat.wav"></audio>
@@ -57,20 +64,35 @@
     <audio data-key="73" src="sounds/ride.wav"></audio>
     <!--Drumkit Sound Wavs - Keyboard-->
 
-    <script>
-        window.addEventListener('keydown', function(e) {
-            const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
-            const key = document.querySelector(`key[data-key="${e.keyCode}"]`);
+<script>
 
-            if(!audio) return; // stop the keyboard function running altogether
+    function removeTransition(e) {
+            if (e.propertyName !== 'transform') return; // skip it if it's not a transform
+           e.target.classList.remove('playing');
+        }
 
-            audio.currentTime = 0; // rewinds to the start for multiple hits of the keys
+    function playSound(e) {
+        const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+        const key = document.querySelector(`div[data-key="${e.keyCode}"]`);
 
-            audio.play();
-        });
+        if (!audio) return; // stop the keyboard function running altogether
+
+        key.classList.add('playing'); // when the key is pressed
+
+        audio.currentTime = 0; // rewinds to the start for multiple hits of the keys
+
+        audio.play();
+
+    }
+
+    const keys = Array.from(document.querySelectorAll('.key'));
+    keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+
+    window.addEventListener('keydown', playSound);
+
+            
     
-    
-    </script>
+</script>
 
 </body>
 </html>

@@ -6,11 +6,12 @@
     height: 100vh;
 }
 
-.keybox {
+.key {
     height: 50px;
     width: 50px;
     border: 2px solid black;
     font-size: 14px;
+    transition: all .08s ease;
     text-align: center;
 }
 
@@ -89,4 +90,9 @@ kbd {
     background: rgba(131, 214, 222, 0.6);
     right: 34%;
     top: 43%;
+}
+
+.playing {
+    transform : scale(1.2);
+    border-color: #F9BF3B;
 }
