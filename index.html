@@ -7,54 +7,54 @@
 </head>
 <body>
     <div class="drumkit">
-        <div data-key="65" class="key">
-            <kbd>A</kbd>
-            <span class="sound">clap</span>
-        </div>
-        <div data-key="83" class="key">
-            <kbd>S</kbd>
+        <div data-key="65" class="keybox hihat">
+            <kbd><span class="keyletter">A</span></kbd>
             <span class="sound">hihat</span>
         </div>
-        <div data-key="68" class="key">
-            <kbd>D</kbd>
-            <span class="sound">kick</span>
-        </div>
-        <div data-key="70" class="key">
-            <kbd>F</kbd>
+        <div data-key="87" class="keybox openhat">
+            <kbd><span class="keyletter">W</span></kbd>
             <span class="sound">openhat</span>
         </div>
-        <div data-key="71" class="key">
-            <kbd>G</kbd>
+        <div data-key="69" class="keybox crash">
+            <kbd><span class="keyletter">E</span></kbd>
+            <span class="sound">crash</span>
+        </div>
+        <div data-key="68" class="keybox snare">
+                <kbd><span class="keyletter">D</span></kbd>
+                <span class="sound">snare</span>
+            </div>
+        <div data-key="71" class="keybox kick">
+            <kbd><span class="keyletter">G</span></kbd>
+            <span class="sound">kick</span>
+        </div>
+        <div data-key="72" class="keybox s-tom">
+                <kbd><span class="keyletter">H</span></kbd>
+            <span class="sound">s-tom</span>
+        </div>
+        <div data-key="74" class="keybox l-tom">
+                <kbd><span class="keyletter">J</span></kbd>
+            <span class="sound">l-tom</span>
+        </div>
+        <div data-key="75" class="keybox boom">
+            <kbd><span class="keyletter">K</span></kbd>
             <span class="sound">boom</span>
         </div>
-        <div data-key="72" class="key">
-            <kbd>H</kbd>
+        <div data-key="73" class="keybox ride">
+                <kbd><span class="keyletter">I</span></kbd>
             <span class="sound">ride</span>
-        </div>
-        <div data-key="74" class="key">
-            <kbd>J</kbd>
-            <span class="sound">snare</span>
-        </div>
-        <div data-key="75" class="key">
-            <kbd>K</kbd>
-            <span class="sound">tom</span>
-        </div>
-        <div data-key="76" class="key">
-            <kbd>L</kbd>
-            <span class="sound">tink</span>
         </div>
     </div><!--/.drumkit-->
 
     <!--Drumkit Sound Wavs - Keyboard-->
-    <audio data-key="65" src="sounds/clap.wav"></audio>
-    <audio data-key="83" src="sounds/hihat.wav"></audio>
-    <audio data-key="68" src="sounds/kick.wav"></audio>
-    <audio data-key="70" src="sounds/openhat.wav"></audio>
-    <audio data-key="71" src="sounds/boom.wav"></audio>
-    <audio data-key="72" src="sounds/ride.wav"></audio>
-    <audio data-key="74" src="sounds/snare.wav"></audio>
-    <audio data-key="75" src="sounds/tom.wav"></audio>
-    <audio data-key="76" src="sounds/tink.wav"></audio>
+    <audio data-key="65" src="sounds/hihat.wav"></audio>
+    <audio data-key="87" src="sounds/openhat.wav"></audio>
+    <audio data-key="69" src="sounds/crash.wav"></audio>
+    <audio data-key="68" src="sounds/snare.wav"></audio>
+    <audio data-key="71" src="sounds/kick.wav"></audio>
+    <audio data-key="72" src="sounds/s-tom.wav"></audio>
+    <audio data-key="74" src="sounds/l-tom.wav"></audio>
+    <audio data-key="75" src="sounds/boom.wav"></audio>
+    <audio data-key="73" src="sounds/ride.wav"></audio>
     <!--Drumkit Sound Wavs - Keyboard-->
 
     <script>
@@ -65,7 +65,7 @@
             if(!audio) return; // stop the keyboard function running altogether
 
             audio.currentTime = 0; // rewinds to the start for multiple hits of the keys
-            
+
             audio.play();
         });
     
