@@ -60,7 +60,12 @@
     <script>
         window.addEventListener('keydown', function(e) {
             const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+            const key = document.querySelector(`key[data-key="${e.keyCode}"]`);
+
             if(!audio) return; // stop the keyboard function running altogether
+
+            audio.currentTime = 0; // rewinds to the start for multiple hits of the keys
+            
             audio.play();
         });
     
