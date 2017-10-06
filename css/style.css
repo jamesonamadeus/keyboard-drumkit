@@ -5,3 +5,18 @@
     background-position: center;
     height: 100vh;
 }
+
+.key {
+    height: 50px;
+    width: 50px;
+    border: 2px solid black;
+    font-size: 14px;
+    text-align: center;
+    vertical-align: center;
+}
+
+kbd {
+    display: block;
+    font-size: 22px;
+    font-weight: 600;
+}
